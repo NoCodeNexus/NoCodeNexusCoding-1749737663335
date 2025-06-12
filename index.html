@@ -1,0 +1,548 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Nexus Club</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #ddd;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: linear-gradient(-45deg, #232526, #414345, #232526, #414345);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        header {
+            background: rgba(17, 17, 17, 0.8); /* Semi-transparent header */
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #2196f3 3px solid;
+            position: relative;
+            z-index: 100;
+        }
+
+        header a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        header ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            overflow: hidden;
+        }
+
+        header li {
+            float: left;
+            display: inline;
+            padding: 0 20px 0 20px;
+        }
+
+        header #branding {
+            float: left;
+        }
+
+        header #branding h1 {
+            margin: 0;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        header nav {
+            float: right;
+            margin-top: 10px;
+        }
+
+        header .highlight, header .current a {
+            color: #2196f3;
+            font-weight: bold;
+        }
+
+        header a:hover {
+            color: #ccc;
+            font-weight: bold;
+        }
+
+        #showcase {
+            min-height: 500px;
+            background: url('https://images.unsplash.com/photo-1517694712202-14f9dca98ba2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center/cover;
+            text-align: center;
+            color: #fff;
+            padding-top: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #showcase::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"%3E%3Cpath d="M0,56.5c0,0,298.666,47.2,600,47.2C901.333,103.7,1200,56.5,1200,56.5v63.5H0V56.5z" fill="%23222"/%3E%3C/svg%3E') repeat-x;
+            animation: wave 10s linear infinite;
+        }
+
+        #showcase h1 {
+            margin-top: 80px;
+            font-size: 60px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: slideInDown 1s ease-in-out;
+        }
+
+        #showcase p {
+            font-size: 24px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            animation: slideInUp 1s ease-in-out;
+        }
+
+        #newsletter {
+            padding: 20px;
+            color: #fff;
+            background: rgba(26, 26, 26, 0.8); /* Semi-transparent */
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        #newsletter h1 {
+            float: left;
+            font-size: 22px;
+            margin-top: 10px;
+        }
+
+        #newsletter form {
+            float: right;
+            margin-top: 5px;
+        }
+
+        #newsletter input[type="email"] {
+            padding: 8px;
+            height: 35px;
+            width: 300px;
+            border: 1px solid #666;
+            background: #333;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        #newsletter input[type="email"]:focus {
+            border-color: #2196f3;
+            outline: none;
+        }
+
+        .button_1 {
+            height: 40px;
+            background: #2196f3;
+            border: 0;
+            padding-left: 20px;
+            padding-right: 20px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .button_1:hover {
+            background: #0b7dda;
+        }
+
+        #boxes {
+            margin-top: 30px;
+            padding: 30px 0;
+            background: rgba(26, 26, 26, 0.7); /* Semi-transparent */
+        }
+
+        #boxes .box {
+            float: left;
+            text-align: center;
+            width: 30%;
+            padding: 20px;
+            border: 1px solid #333;
+            margin: 1.6%;
+            transition: transform 0.3s ease;
+        }
+
+        #boxes .box:hover {
+            transform: translateY(-10px);
+        }
+
+        #boxes .box img {
+            width: 120px;
+            margin-bottom: 15px;
+            /* animation: rotate 5s linear infinite; */ /* Removed rotate animation */
+        }
+
+        #boxes .box h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        #boxes .box p {
+            font-size: 16px;
+        }
+
+        #about {
+            padding: 40px 0;
+        }
+
+        #about h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #fff;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        #about p {
+            font-size: 18px;
+            margin-bottom: 15px;
+            animation: slideInLeft 1s ease-in-out;
+        }
+
+        #services {
+            padding: 40px 0;
+            background: rgba(17, 17, 17, 0.8); /* Semi-transparent */
+        }
+
+        #services h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #fff;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        #services ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #services li {
+            background: rgba(34, 34, 34, 0.8); /* Semi-transparent */
+            padding: 20px;
+            margin-bottom: 10px;
+            border-left: 5px solid #2196f3;
+            transition: all 0.3s ease;
+        }
+
+        #services li:hover {
+            transform: translateX(5px);
+            background: rgba(51, 51, 51, 0.8); /* Semi-transparent */
+        }
+
+        #services li h3 {
+            font-size: 20px;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        #services li p {
+            font-size: 16px;
+        }
+
+        /* Review Section */
+        #reviews {
+            padding: 40px 0;
+            background: rgba(26, 26, 26, 0.7);
+        }
+
+        #reviews h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #fff;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .review-card {
+            background: rgba(34, 34, 34, 0.8);
+            padding: 20px;
+            margin: 20px auto;
+            width: 60%;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .review-card h3 {
+            font-size: 20px;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .review-card p {
+            font-size: 16px;
+        }
+
+        .review-card .author {
+            font-style: italic;
+            text-align: right;
+            color: #ccc;
+        }
+
+
+        footer {
+            padding: 20px;
+            margin-top: 20px;
+            color: #fff;
+            background-color: #2196f3;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Keyframe Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes wave {
+            0% {
+                background-position: 0 bottom;
+            }
+            100% {
+                background-position: 1200px bottom;
+            }
+        }
+
+        /* Media Queries */
+        @media(max-width: 768px) {
+            header #branding,
+            header nav,
+            header nav li,
+            #newsletter h1,
+            #newsletter form,
+            #boxes .box {
+                float: none;
+                text-align: center;
+                width: 100%;
+            }
+
+            header {
+                padding-bottom: 50px;
+            }
+
+            #showcase h1 {
+                margin-top: 40px;
+                font-size: 40px;
+            }
+
+            #showcase p {
+                font-size: 18px;
+            }
+
+            #newsletter form {
+                margin-top: 0;
+            }
+
+            #newsletter input[type="email"] {
+                width: 100%;
+            }
+
+            #boxes .box {
+                margin: 10px 0;
+            }
+
+            .review-card {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1><span class="highlight">Code</span> Nexus Club</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li class="current"><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="showcase">
+        <div class="container">
+            <h1>Unleash Your Coding Potential</h1>
+            <p>Master the art of C++ programming with our expert-led club. Join us and shape the future of technology.</p>
+        </div>
+    </section>
+
+    <section id="newsletter">
+        <div class="container">
+            <h1>Subscribe to Stay Updated</h1>
+            <form>
+                <input type="email" placeholder="Enter Your Email...">
+                <button type="submit" class="button_1">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="boxes">
+        <div class="container">
+            <div class="box">
+                <img src="https://cdn-icons-png.flaticon.com/512/59/59438.png" alt="C++ Logo">
+                <h3>Beginner-Friendly Courses</h3>
+                <p>Start your C++ journey with our comprehensive introductory courses. No prior experience needed!</p>
+            </div>
+            <div class="box">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/1822px-ISO_C%2B%2B_Logo.svg.png" alt="Advanced C++">
+                <h3>Advanced Workshops</h3>
+                <p>Dive deep into advanced C++ topics with our specialized workshops. Elevate your coding skills.</p>
+            </div>
+            <div class="box">
+                <img src="https://static-00.iconduck.com/assets.00/c-plus-plus-icon-2048x2048-jkwjcdxv.png" alt="Project Based Learning">
+                <h3>Hands-On Projects</h3>
+                <p>Apply your knowledge and build impressive C++ projects. Gain real-world experience.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2>About Our Club</h2>
+            <p>The Code Nexus Club is dedicated to providing students with a supportive and enriching environment to learn and master C++ programming. Our club offers a variety of resources, including beginner-friendly courses, advanced workshops, and hands-on projects, designed to help students of all levels achieve their coding goals.</p>
+            <p>We believe that coding is a powerful tool that can be used to solve complex problems and create innovative solutions. Our mission is to empower students with the skills and knowledge they need to become successful C++ programmers and contribute to the world of technology.</p>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <ul>
+                <li>
+                    <h3>Comprehensive C++ Tutorials</h3>
+                    <p>Access a vast library of tutorials covering everything from basic syntax to advanced concepts.</p>
+                </li>
+                <li>
+                    <h3>Expert Mentorship</h3>
+                    <p>Receive personalized guidance from experienced C++ developers and mentors.</p>
+                </li>
+                <li>
+                    <h3>Collaborative Projects</h3>
+                    <p>Work with other club members on exciting C++ projects and build your portfolio.</p>
+                </li>
+                <li>
+                    <h3>Coding Challenges</h3>
+                    <p>Test your skills and compete with others in our regular coding challenges and competitions.</p>
+                </li>
+                <li>
+                    <h3>Career Guidance</h3>
+                    <p>Get advice and support on your career path as a C++ developer.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="reviews">
+        <div class="container">
+            <h2>Student Reviews</h2>
+            <div class="review-card">
+                <h3>Excellent Learning Environment</h3>
+                <p>The Code Nexus Club provided an excellent learning environment for me to grasp the fundamentals of C++. The instructors were knowledgeable and supportive, and I highly recommend this club to anyone interested in coding.</p>
+                <p class="author">- John Doe</p>
+            </div>
+            <div class="review-card">
+                <h3>Great Community</h3>
+                <p>I loved being a part of the Code Nexus Club. The community is amazing, and I've made some great friends who share my passion for coding. The workshops were incredibly helpful, and I've learned so much.</p>
+                <p class="author">- Jane Smith</p>
+            </div>
+            <div class="review-card">
+                <h3>Hands-On Experience</h3>
+                <p>The hands-on projects offered by the Code Nexus Club were invaluable. I was able to apply what I learned in the courses and build some impressive projects for my portfolio. This club has definitely prepared me for a career in software development.</p>
+                <p class="author">- David Lee</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <p>Email: example@email.com</p>
+            <p>Phone: +1 123-456-7890</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>Code Nexus Club, Copyright &copy; 2024</p>
+    </footer>
+</body>
+</html>
+```
